@@ -14,7 +14,8 @@ import {
   Check, 
   Copy, 
   ExternalLink,
-  MessageSquare
+  MessageSquare,
+  AlertCircle
 } from "lucide-react";
 import confetti from "canvas-confetti";
 
@@ -27,6 +28,7 @@ export function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
 
@@ -34,15 +36,31 @@ export function Contact() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (errorMessage) setErrorMessage(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
 
-    // Simulate submission & trigger confetti
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.error || "Failed to send message. Please verify configuration or try again."
+        );
+      }
+
       setIsSubmitted(true);
 
       // Fire celebratory confetti
@@ -58,7 +76,13 @@ export function Contact() {
         setFormData({ name: "", email: "", subject: "", message: "" });
         setIsSubmitted(false);
       }, 5000);
-    }, 1200);
+    } catch (err: unknown) {
+      const errorMsg =
+        err instanceof Error ? err.message : "An unexpected error occurred.";
+      setErrorMessage(errorMsg);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const copyToClipboard = (text: string, type: "email" | "phone") => {
@@ -217,6 +241,18 @@ export function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+                  {errorMessage && (
+                    <div className="p-4 rounded-xl dark:bg-rose-950/40 bg-rose-50 border dark:border-rose-800/60 border-rose-200 text-rose-600 dark:text-rose-300 text-xs sm:text-sm flex items-start gap-3 animate-shake">
+                      <AlertCircle className="w-5 h-5 shrink-0 text-rose-500 mt-0.5" />
+                      <div className="space-y-1">
+                        <p className="font-semibold">{errorMessage}</p>
+                        <p className="text-[11px] opacity-80">
+                          If testing locally, please check <code className="bg-black/20 px-1 py-0.5 rounded font-mono">.env.local</code> for your Gmail App Password.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
                       <label className="block text-xs font-mono dark:text-stone-400 text-stone-700 uppercase tracking-wider mb-2 font-semibold">
@@ -226,10 +262,11 @@ export function Contact() {
                         type="text"
                         name="name"
                         required
+                        disabled={isSubmitting}
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="John Doe"
-                        className="w-full px-4 py-3 rounded-xl dark:bg-white/[0.04] bg-stone-50 border dark:border-white/10 border-stone-300 dark:text-white text-stone-900 placeholder:dark:text-stone-600 placeholder:text-stone-400 focus:outline-none focus:border-[#c8cb6d] focus:ring-1 focus:ring-[#c8cb6d] transition-all text-base sm:text-sm font-medium"
+                        className="w-full px-4 py-3 rounded-xl dark:bg-white/[0.04] bg-stone-50 border dark:border-white/10 border-stone-300 dark:text-white text-stone-900 placeholder:dark:text-stone-600 placeholder:text-stone-400 focus:outline-none focus:border-[#c8cb6d] focus:ring-1 focus:ring-[#c8cb6d] transition-all text-base sm:text-sm font-medium disabled:opacity-50"
                       />
                     </div>
 
@@ -241,10 +278,11 @@ export function Contact() {
                         type="email"
                         name="email"
                         required
+                        disabled={isSubmitting}
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="john@example.com"
-                        className="w-full px-4 py-3 rounded-xl dark:bg-white/[0.04] bg-stone-50 border dark:border-white/10 border-stone-300 dark:text-white text-stone-900 placeholder:dark:text-stone-600 placeholder:text-stone-400 focus:outline-none focus:border-[#c8cb6d] focus:ring-1 focus:ring-[#c8cb6d] transition-all text-base sm:text-sm font-medium"
+                        className="w-full px-4 py-3 rounded-xl dark:bg-white/[0.04] bg-stone-50 border dark:border-white/10 border-stone-300 dark:text-white text-stone-900 placeholder:dark:text-stone-600 placeholder:text-stone-400 focus:outline-none focus:border-[#c8cb6d] focus:ring-1 focus:ring-[#c8cb6d] transition-all text-base sm:text-sm font-medium disabled:opacity-50"
                       />
                     </div>
                   </div>
@@ -256,10 +294,11 @@ export function Contact() {
                     <input
                       type="text"
                       name="subject"
+                      disabled={isSubmitting}
                       value={formData.subject}
                       onChange={handleInputChange}
                       placeholder="e.g. Frontend Development Collaboration"
-                      className="w-full px-4 py-3 rounded-xl dark:bg-white/[0.04] bg-stone-50 border dark:border-white/10 border-stone-300 dark:text-white text-stone-900 placeholder:dark:text-stone-600 placeholder:text-stone-400 focus:outline-none focus:border-[#c8cb6d] focus:ring-1 focus:ring-[#c8cb6d] transition-all text-base sm:text-sm font-medium"
+                      className="w-full px-4 py-3 rounded-xl dark:bg-white/[0.04] bg-stone-50 border dark:border-white/10 border-stone-300 dark:text-white text-stone-900 placeholder:dark:text-stone-600 placeholder:text-stone-400 focus:outline-none focus:border-[#c8cb6d] focus:ring-1 focus:ring-[#c8cb6d] transition-all text-base sm:text-sm font-medium disabled:opacity-50"
                     />
                   </div>
 
@@ -271,10 +310,11 @@ export function Contact() {
                       name="message"
                       rows={5}
                       required
+                      disabled={isSubmitting}
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Hi Hari, I'd like to discuss a project..."
-                      className="w-full px-4 py-3 rounded-xl dark:bg-white/[0.04] bg-stone-50 border dark:border-white/10 border-stone-300 dark:text-white text-stone-900 placeholder:dark:text-stone-600 placeholder:text-stone-400 focus:outline-none focus:border-[#c8cb6d] focus:ring-1 focus:ring-[#c8cb6d] transition-all text-base sm:text-sm resize-none font-medium"
+                      className="w-full px-4 py-3 rounded-xl dark:bg-white/[0.04] bg-stone-50 border dark:border-white/10 border-stone-300 dark:text-white text-stone-900 placeholder:dark:text-stone-600 placeholder:text-stone-400 focus:outline-none focus:border-[#c8cb6d] focus:ring-1 focus:ring-[#c8cb6d] transition-all text-base sm:text-sm resize-none font-medium disabled:opacity-50"
                     />
                   </div>
 
@@ -286,7 +326,7 @@ export function Contact() {
                     icon={<Send className="w-4 h-4" />}
                     className="w-full"
                   >
-                    Send Message
+                    {isSubmitting ? "Sending Message..." : "Send Message"}
                   </Button>
                 </form>
               )}
