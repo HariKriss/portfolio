@@ -92,7 +92,7 @@ export const metadata: Metadata = {
         alt: "Hari Prasath - Frontend Developer",
       },
       {
-        url: "/assets/syncraze.jpg",
+        url: "/assets/syncraze.png",
         width: 1200,
         height: 630,
         alt: "Syncraze Enterprise Platform by Hari Prasath",
@@ -213,11 +213,11 @@ const jsonLd = {
         {
           "@type": "SoftwareApplication",
           position: 2,
-          name: "Melloplex Streaming Platform",
+          name: "Mellowplex Metaverse Platform",
           applicationCategory: "MultimediaApplication",
           operatingSystem: "Web",
           description:
-            "Cinematic streaming platform with live stream broadcasting, interactive chat, and dynamic UI animations.",
+            "AI-gamified movie metaverse platform featuring 360-degree VR experiences and interactive fan challenges.",
           creator: {
             "@id": `${siteUrl}/#person`,
           },
@@ -225,11 +225,11 @@ const jsonLd = {
         {
           "@type": "SoftwareApplication",
           position: 3,
-          name: "ChitApp Financial Management",
+          name: "Aram Enterprises Chit Fund Platform",
           applicationCategory: "FinanceApplication",
           operatingSystem: "Web",
           description:
-            "Modern FinTech chit fund auction & collection management platform.",
+            "Modern FinTech chit fund schemes and investment platform for Aram Enterprises.",
           creator: {
             "@id": `${siteUrl}/#person`,
           },
