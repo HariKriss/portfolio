@@ -357,14 +357,14 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.65 }}
               className="flex items-center gap-3 justify-center lg:justify-start"
             >
-              <span className="text-xs font-mono text-stone-500 mr-1">CONNECT:</span>
+              <span className="text-xs font-mono dark:text-stone-500 text-stone-600 font-medium mr-1">CONNECT:</span>
 
               <a
                 href={personalData.contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
-                className="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-stone-400 hover:text-[#c8cb6d] hover:border-[#c8cb6d]/50 hover:bg-[#c8cb6d]/10 hover:shadow-[0_0_20px_rgba(200,203,109,0.35)] transition-all duration-300"
+                className="w-10 h-10 rounded-xl glass-card flex items-center justify-center dark:text-stone-400 text-stone-700 hover:text-[#c8cb6d] hover:border-[#c8cb6d]/50 hover:bg-[#c8cb6d]/10 hover:shadow-[0_0_20px_rgba(200,203,109,0.35)] transition-all duration-300"
               >
                 <LinkedInIcon className="w-4 h-4" />
               </a>
@@ -372,7 +372,7 @@ export function Hero() {
               <a
                 href={`mailto:${personalData.contact.email}`}
                 aria-label="Send Email"
-                className="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-stone-400 hover:text-[#e2e58c] hover:border-[#c8cb6d]/50 hover:bg-[#c8cb6d]/10 hover:shadow-[0_0_20px_rgba(200,203,109,0.35)] transition-all duration-300"
+                className="w-10 h-10 rounded-xl glass-card flex items-center justify-center dark:text-stone-400 text-stone-700 hover:text-[#e2e58c] hover:border-[#c8cb6d]/50 hover:bg-[#c8cb6d]/10 hover:shadow-[0_0_20px_rgba(200,203,109,0.35)] transition-all duration-300"
               >
                 <Mail className="w-4 h-4" />
               </a>
@@ -380,7 +380,7 @@ export function Hero() {
               <a
                 href={`tel:${personalData.contact.phone}`}
                 aria-label="Phone Call"
-                className="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-stone-400 hover:text-[#e69832] hover:border-[#e69832]/50 hover:bg-[#e69832]/10 hover:shadow-[0_0_20px_rgba(230,152,50,0.35)] transition-all duration-300"
+                className="w-10 h-10 rounded-xl glass-card flex items-center justify-center dark:text-stone-400 text-stone-700 hover:text-[#e69832] hover:border-[#e69832]/50 hover:bg-[#e69832]/10 hover:shadow-[0_0_20px_rgba(230,152,50,0.35)] transition-all duration-300"
               >
                 <Phone className="w-4 h-4" />
               </a>
@@ -451,15 +451,15 @@ export function Hero() {
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8, duration: 0.6 }}
-                  className="absolute bottom-1 left-0 sm:bottom-4 sm:-left-6 px-3 py-2 sm:px-4 sm:py-2.5 rounded-2xl glass-panel border border-white/15 shadow-2xl flex items-center gap-2.5 sm:gap-3 backdrop-blur-xl z-10"
+                  className="absolute bottom-1 left-0 sm:bottom-4 sm:-left-6 px-3 py-2 sm:px-4 sm:py-2.5 rounded-2xl glass-panel border dark:border-white/15 border-stone-200/90 shadow-2xl flex items-center gap-2.5 sm:gap-3 backdrop-blur-xl z-10"
                   style={{ transform: "translateZ(40px)" }}
                 >
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#c8cb6d]/20 text-[#e2e58c] flex items-center justify-center border border-[#c8cb6d]/30 shrink-0">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl dark:bg-[#c8cb6d]/20 bg-[#5c6b2f]/15 dark:text-[#e2e58c] text-[#5c6b2f] flex items-center justify-center border dark:border-[#c8cb6d]/30 border-[#5c6b2f]/30 shrink-0">
                     <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <div className="text-left">
-                    <p className="text-[9px] sm:text-[10px] uppercase font-mono text-stone-400">Experience</p>
-                    <p className="text-[11px] sm:text-xs font-bold text-white whitespace-nowrap">3+ Years Pro</p>
+                    <p className="text-[9px] sm:text-[10px] uppercase font-mono dark:text-stone-400 text-stone-600 font-semibold">Experience</p>
+                    <p className="text-[11px] sm:text-xs font-bold dark:text-white text-stone-900 whitespace-nowrap">3+ Years Pro</p>
                   </div>
                 </motion.div>
 
