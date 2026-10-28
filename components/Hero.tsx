@@ -442,7 +442,7 @@ export function Hero() {
                     fill
                     sizes="(max-width: 768px) 300px, 420px"
                     priority
-                    className="object-cover object-[center_18%] rounded-[38%_62%_63%_37%/41%_44%_56%_59%] contrast-[1.03] brightness-[1.02] hover:scale-105 transition-transform duration-700"
+                    className="object-cover object-center rounded-[38%_62%_63%_37%/41%_44%_56%_59%] contrast-[1.03] brightness-[1.02] hover:scale-105 transition-transform duration-700"
                   />
                 </div>
 
