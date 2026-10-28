@@ -31,49 +31,49 @@ export function Education() {
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.6 }}
         >
-          <TiltCard className="glass-panel p-8 sm:p-10 rounded-3xl border border-white/10 hover:border-[#c8cb6d]/40 transition-all duration-300 shadow-2xl relative overflow-hidden">
+          <TiltCard className="glass-panel p-8 sm:p-10 rounded-3xl border dark:border-white/10 border-stone-200 hover:border-[#c8cb6d]/50 transition-all duration-300 shadow-2xl relative overflow-hidden">
             {/* Ambient Corner Glow */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#c8cb6d]/10 via-[#7e8a42]/10 to-transparent pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl dark:from-[#c8cb6d]/10 from-[#5c6b2f]/10 via-[#7e8a42]/10 to-transparent pointer-events-none" />
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3.5">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#7e8a42] to-[#c8cb6d] flex items-center justify-center text-stone-950 font-bold shadow-lg shadow-[#c8cb6d]/20">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#7e8a42] to-[#c8cb6d] flex items-center justify-center text-stone-950 font-bold shadow-lg shadow-[#c8cb6d]/20 shrink-0">
                   <GraduationCap className="w-6 h-6 text-stone-950" />
                 </div>
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white">
+                  <h3 className="text-xl sm:text-2xl font-bold dark:text-white text-stone-900">
                     {educationData.degree}
                   </h3>
-                  <p className="text-sm font-semibold text-[#e2e58c]">
+                  <p className="text-sm font-semibold dark:text-[#e2e58c] text-[#5c6b2f]">
                     {educationData.institution}
                   </p>
                 </div>
               </div>
 
               <div className="flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-1.5 text-xs font-mono text-[#c8cb6d] bg-[#c8cb6d]/10 px-3 py-1 rounded-full border border-[#c8cb6d]/20">
+                <span className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold dark:text-[#c8cb6d] text-[#5c6b2f] dark:bg-[#c8cb6d]/10 bg-[#5c6b2f]/10 px-3 py-1 rounded-full border dark:border-[#c8cb6d]/20 border-[#5c6b2f]/25">
                   <Calendar className="w-3.5 h-3.5" />
                   {educationData.period}
                 </span>
-                <span className="inline-flex items-center gap-1.5 text-xs text-stone-400">
-                  <MapPin className="w-3.5 h-3.5 text-stone-500" />
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium dark:text-stone-400 text-stone-600">
+                  <MapPin className="w-3.5 h-3.5 dark:text-stone-500 text-stone-500" />
                   {educationData.location}
                 </span>
               </div>
             </div>
 
-            <p className="text-sm sm:text-base text-stone-300 mb-6 leading-relaxed">
+            <p className="text-sm sm:text-base dark:text-stone-300 text-stone-700 mb-6 leading-relaxed font-normal">
               {educationData.details}
             </p>
 
             {/* Highlights */}
-            <div className="space-y-2.5 pt-6 border-t border-white/10">
+            <div className="space-y-2.5 pt-6 border-t dark:border-white/10 border-stone-200">
               {educationData.highlights.map((highlight, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-3 text-xs sm:text-sm text-stone-400"
+                  className="flex items-start gap-3 text-xs sm:text-sm dark:text-stone-300 text-stone-700 font-medium"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-[#c8cb6d] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 dark:text-[#c8cb6d] text-[#5c6b2f] shrink-0 mt-0.5" />
                   <span>{highlight}</span>
                 </div>
               ))}
