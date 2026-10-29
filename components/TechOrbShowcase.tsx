@@ -24,20 +24,14 @@ import {
 import { Badge } from "./ui/Badge";
 import { 
   X, 
-  Code2, 
   Layers, 
   Zap, 
-  ExternalLink, 
   CheckCircle2, 
-  FolderOpen,
-  Cpu,
-  Database,
-  Info,
-  Radio,
-  Sparkles,
-  Workflow,
-  Compass,
-  Activity
+  Activity,
+  Play,
+  Pause,
+  ChevronRight,
+  Sparkles
 } from "lucide-react";
 
 export interface TechDetail {
@@ -109,6 +103,114 @@ export const techDetailsData: Record<string, TechDetail> = {
     accent: "rgba(49, 120, 198, 0.25)",
     tier: "inner"
   },
+  tailwind: {
+    id: "tailwind",
+    name: "Tailwind CSS",
+    category: "Frontend",
+    level: "Expert",
+    experience: "3+ Years",
+    summary: "Modern utility-first responsive styling, custom design tokens, dark/light theme systems, and micro-interactions.",
+    features: [
+      "Custom theme extensions & tokens",
+      "Responsive fluid layouts (Mobile-First)",
+      "Dark mode & high-contrast themes",
+      "JIT compiler & zero-runtime CSS"
+    ],
+    usedInProjects: ["Syncraze ERP", "Mellowplex", "Gaston Monitoring", "Aram Enterprises"],
+    color: "#06B6D4",
+    accent: "rgba(6, 182, 212, 0.25)",
+    tier: "inner"
+  },
+  nodejs: {
+    id: "nodejs",
+    name: "Node.js",
+    category: "Backend",
+    level: "Advanced",
+    experience: "2.5+ Years",
+    summary: "Asynchronous runtime environments, RESTful APIs, auth pipelines, background jobs, and stream processing.",
+    features: [
+      "Event-driven architecture & streams",
+      "RESTful API design & middleware",
+      "JWT authentication & bcrypt hashing",
+      "Process management & error handling"
+    ],
+    usedInProjects: ["Syncraze API", "Mellowplex Server", "Gaston Monitoring"],
+    color: "#339933",
+    accent: "rgba(51, 153, 51, 0.25)",
+    tier: "mid"
+  },
+  express: {
+    id: "express",
+    name: "Express.js",
+    category: "Backend",
+    level: "Advanced",
+    experience: "2.5+ Years",
+    summary: "High-throughput modular microservices, CORS security policies, request validation, and database connectors.",
+    features: [
+      "Modular routing architectures",
+      "Custom authentication middlewares",
+      "Rate-limiting & security headers",
+      "Centralized error handling"
+    ],
+    usedInProjects: ["Syncraze Enterprise Server", "Gaston API"],
+    color: "#ffffff",
+    accent: "rgba(255, 255, 255, 0.25)",
+    tier: "mid"
+  },
+  mongodb: {
+    id: "mongodb",
+    name: "MongoDB",
+    category: "Database",
+    level: "Advanced",
+    experience: "2+ Years",
+    summary: "Document database architecture, flexible schemas, indexing strategies, and aggregation pipeline analytics.",
+    features: [
+      "Mongoose ODM schema modeling",
+      "Complex aggregation pipelines",
+      "Indexed queries & pagination",
+      "Multi-tenant data isolation"
+    ],
+    usedInProjects: ["Syncraze ERP Suite", "Mellowplex DB"],
+    color: "#13AA52",
+    accent: "rgba(19, 170, 82, 0.25)",
+    tier: "mid"
+  },
+  mysql: {
+    id: "mysql",
+    name: "MySQL",
+    category: "Database",
+    level: "Intermediate",
+    experience: "2+ Years",
+    summary: "Relational schema design, ACID transactions, complex joins, indexing, and foreign key integrity.",
+    features: [
+      "Relational table normalization",
+      "Complex multi-table JOINs",
+      "ACID compliant transactions",
+      "Stored procedures & query tuning"
+    ],
+    usedInProjects: ["Enterprise Internal Tools", "CNI Business Suite"],
+    color: "#00758F",
+    accent: "rgba(0, 117, 143, 0.25)",
+    tier: "mid"
+  },
+  redux: {
+    id: "redux",
+    name: "Redux RTK",
+    category: "State & Tools",
+    level: "Advanced",
+    experience: "2.5+ Years",
+    summary: "Predictable centralized state management with Redux Toolkit (RTK), slices, memoized selectors, and RTK Query.",
+    features: [
+      "createSlice & createAsyncThunk",
+      "Normalized entity state management",
+      "RTK Query caching & invalidation",
+      "Redux DevTools state debugging"
+    ],
+    usedInProjects: ["Syncraze ERP (9+ Modules)", "Mellowplex Admin"],
+    color: "#764ABC",
+    accent: "rgba(118, 74, 188, 0.25)",
+    tier: "mid"
+  },
   javascript: {
     id: "javascript",
     name: "JavaScript (ES6+)",
@@ -118,184 +220,22 @@ export const techDetailsData: Record<string, TechDetail> = {
     summary: "Deep knowledge of async event loops, DOM manipulation, functional paradigms, closures, and browser APIs.",
     features: [
       "Async/Await & Promises",
-      "ESNext modules & destructuring",
-      "Event bubbling & custom listeners",
-      "Zero-latency calculations"
+      "Event loops & microtask queues",
+      "Destructuring & spread patterns",
+      "High-order array functions"
     ],
     usedInProjects: ["All Client & Enterprise Projects"],
     color: "#F7DF1E",
     accent: "rgba(247, 223, 30, 0.25)",
-    tier: "mid"
-  },
-  tailwind: {
-    id: "tailwind",
-    name: "Tailwind CSS",
-    category: "Frontend",
-    level: "Advanced",
-    experience: "2.5+ Years",
-    summary: "Utility-first design systems, responsive mobile-first layouts, custom theme configurations, and dark/light modes.",
-    features: [
-      "Responsive design breakpoints",
-      "Dark / Light theme color tokens",
-      "Micro-animations & transitions",
-      "Minimal CSS bundle footprints"
-    ],
-    usedInProjects: ["Mellowplex", "Developer Portfolios"],
-    color: "#06B6D4",
-    accent: "rgba(6, 182, 212, 0.25)",
-    tier: "outer"
-  },
-  mui: {
-    id: "mui",
-    name: "Material UI (MUI)",
-    category: "Frontend",
-    level: "Advanced",
-    experience: "2+ Years",
-    summary: "Custom theme providers, dense data grids, accessible modal workflows, and enterprise design token adaptation.",
-    features: [
-      "Custom palette & typography overrides",
-      "Complex DataGrid filtering & sorting",
-      "Nested navigation drawers & modals",
-      "Responsive container systems"
-    ],
-    usedInProjects: ["Syncraze ERP (9+ Modules)"],
-    color: "#007FFF",
-    accent: "rgba(0, 127, 255, 0.25)",
-    tier: "outer"
-  },
-  redux: {
-    id: "redux",
-    name: "Redux & RTK",
-    category: "State & Tools",
-    level: "Advanced",
-    experience: "2.5+ Years",
-    summary: "Predictable centralized state architecture, slice reducers, middleware dispatchers, and state normalization.",
-    features: [
-      "RTK slices & createAsyncThunk",
-      "Normalized entity adapters",
-      "Persistent state hydrations",
-      "DevTools time-travel debugging"
-    ],
-    usedInProjects: ["Syncraze Enterprise Platform"],
-    color: "#764ABC",
-    accent: "rgba(118, 74, 188, 0.25)",
-    tier: "mid"
-  },
-  reactquery: {
-    id: "reactquery",
-    name: "React Query",
-    category: "State & Tools",
-    level: "Advanced",
-    experience: "2+ Years",
-    summary: "Automated asynchronous server-state synchronization, query key invalidation, background polling, and optimistic updates.",
-    features: [
-      "Background cache revalidation",
-      "Infinite scroll pagination queries",
-      "Optimistic UI updates",
-      "Garbage collection & retry policies"
-    ],
-    usedInProjects: ["Syncraze ERP", "Mellowplex Media"],
-    color: "#FF4154",
-    accent: "rgba(255, 65, 84, 0.25)",
-    tier: "outer"
-  },
-  nodejs: {
-    id: "nodejs",
-    name: "Node.js",
-    category: "Backend",
-    level: "Advanced",
-    experience: "2+ Years",
-    summary: "Building lightweight REST services, asynchronous I/O handlers, backend route integration, and server-side utilities.",
-    features: [
-      "Event-driven architecture",
-      "JSON payload streaming & handling",
-      "File I/O & Excel bulk data parsing",
-      "Environment config & security"
-    ],
-    usedInProjects: ["Enterprise Services & Tools"],
-    color: "#339933",
-    accent: "rgba(51, 153, 51, 0.25)",
-    tier: "inner"
-  },
-  express: {
-    id: "express",
-    name: "Express.js",
-    category: "Backend",
-    level: "Intermediate",
-    experience: "2 Years",
-    summary: "REST API route modularization, authentication middleware, error handling pipelines, and database controller binding.",
-    features: [
-      "Route controller patterns",
-      "CORS & Auth middlewares",
-      "Structured error response handlers",
-      "Database schema connectors"
-    ],
-    usedInProjects: ["Full-Stack Dashboards & APIs"],
-    color: "#64748b",
-    accent: "rgba(100, 116, 139, 0.25)",
-    tier: "mid"
-  },
-  mongodb: {
-    id: "mongodb",
-    name: "MongoDB",
-    category: "Database",
-    level: "Intermediate",
-    experience: "1.5+ Years",
-    summary: "NoSQL document modeling, indexing, aggregation pipelines, and Mongoose schema definitions.",
-    features: [
-      "Document schema design",
-      "CRUD operations & Aggregations",
-      "Flexible data models",
-      "Atlas cloud cluster connectivity"
-    ],
-    usedInProjects: ["Full-Stack Web Applications"],
-    color: "#13AA52",
-    accent: "rgba(19, 170, 82, 0.25)",
-    tier: "inner"
-  },
-  mysql: {
-    id: "mysql",
-    name: "MySQL",
-    category: "Database",
-    level: "Intermediate",
-    experience: "2+ Years",
-    summary: "Relational database schema modeling, primary/foreign key relationships, indexing, and transactional queries.",
-    features: [
-      "Relational schema structures",
-      "Complex JOIN queries & filters",
-      "Chit fund ledger transaction tables",
-      "Data consistency & normalization"
-    ],
-    usedInProjects: ["Chit Fund Platform", "Redblox Client Apps"],
-    color: "#00758F",
-    accent: "rgba(0, 117, 143, 0.25)",
-    tier: "mid"
-  },
-  php: {
-    id: "php",
-    name: "PHP",
-    category: "Backend",
-    level: "Intermediate",
-    experience: "2 Years",
-    summary: "Backend server scripting, database connectors, session management, and server-rendered view pipelines.",
-    features: [
-      "Backend business logic handlers",
-      "MySQL PDO & mysqli connectors",
-      "Form sanitization & processing",
-      "MVC architecture patterns"
-    ],
-    usedInProjects: ["Chit Fund Platform", "Client Portals"],
-    color: "#777BB4",
-    accent: "rgba(119, 123, 180, 0.25)",
     tier: "outer"
   },
   git: {
     id: "git",
-    name: "Git & GitHub",
+    name: "Git / GitHub",
     category: "State & Tools",
-    level: "Advanced",
-    experience: "3+ Years Daily Use",
-    summary: "Version control branching workflows, feature branching, pull request reviews, and continuous team collaboration.",
+    level: "Expert",
+    experience: "3+ Years",
+    summary: "Distributed version control, trunk-based development, git rebasing, merge conflict resolution, and CI/CD pipelines.",
     features: [
       "Feature branching & rebasing",
       "Merge conflict resolution",
@@ -305,7 +245,25 @@ export const techDetailsData: Record<string, TechDetail> = {
     usedInProjects: ["All Client & Enterprise Projects"],
     color: "#F05032",
     accent: "rgba(240, 80, 50, 0.25)",
-    tier: "mid"
+    tier: "outer"
+  },
+  reactquery: {
+    id: "reactquery",
+    name: "React Query",
+    category: "State & Tools",
+    level: "Advanced",
+    experience: "2+ Years",
+    summary: "Server-state caching, automatic background refetching, optimistic mutations, and window focus synchronization.",
+    features: [
+      "Stale-while-revalidate caching",
+      "Optimistic UI updates",
+      "Infinite scroll & pagination",
+      "Automatic query deduplication"
+    ],
+    usedInProjects: ["Syncraze Enterprise Dashboard", "Gaston Live"],
+    color: "#FF4154",
+    accent: "rgba(255, 65, 84, 0.25)",
+    tier: "outer"
   },
   apexcharts: {
     id: "apexcharts",
@@ -325,52 +283,87 @@ export const techDetailsData: Record<string, TechDetail> = {
     accent: "rgba(0, 227, 150, 0.25)",
     tier: "outer"
   },
+  php: {
+    id: "php",
+    name: "PHP Server",
+    category: "Backend",
+    level: "Intermediate",
+    experience: "2+ Years",
+    summary: "Server-side scripting, legacy API maintenance, database integration, and MVC application architecture.",
+    features: [
+      "RESTful endpoint implementation",
+      "PDO secure database bindings",
+      "Server session & auth cookies",
+      "Legacy system migration to Node/Next"
+    ],
+    usedInProjects: ["Aram Enterprises", "Star Business Portal"],
+    color: "#777BB4",
+    accent: "rgba(119, 123, 180, 0.25)",
+    tier: "outer"
+  },
+  mui: {
+    id: "mui",
+    name: "MUI Design",
+    category: "Frontend",
+    level: "Advanced",
+    experience: "2.5+ Years",
+    summary: "Material Design enterprise data grids, complex modal forms, custom palette overrides, and accessible controls.",
+    features: [
+      "Custom theme themeProvider overrides",
+      "DataGrid pro filtering & sorting",
+      "Accessible modal & drawer systems",
+      "Styled-components & sx prop APIs"
+    ],
+    usedInProjects: ["Syncraze ERP Management Suite"],
+    color: "#007FFF",
+    accent: "rgba(0, 127, 255, 0.25)",
+    tier: "outer"
+  },
 };
 
-// Layout coordinates across a dynamic arched solar constellation
-const constellationNodes = [
-  // Top Outer Arc
-  { id: "react", x: 120, y: 110, floatDuration: 4.2, delay: 0, label: "React.js" },
-  { id: "nextjs", x: 230, y: 70, floatDuration: 4.8, delay: 0.5, label: "Next.js" },
-  { id: "typescript", x: 350, y: 50, floatDuration: 3.9, delay: 1.0, label: "TypeScript" },
-  { id: "nodejs", x: 470, y: 50, floatDuration: 4.5, delay: 1.5, label: "Node.js" },
-  { id: "mongodb", x: 590, y: 70, floatDuration: 4.1, delay: 2.0, label: "MongoDB" },
-  { id: "redux", x: 700, y: 110, floatDuration: 4.6, delay: 2.5, label: "Redux RTK" },
-  
-  // Mid Orbit Tier
-  { id: "tailwind", x: 160, y: 220, floatDuration: 3.8, delay: 0.8, label: "Tailwind CSS" },
-  { id: "javascript", x: 270, y: 170, floatDuration: 4.3, delay: 1.3, label: "JS (ES6+)" },
-  { id: "express", x: 410, y: 155, floatDuration: 4.0, delay: 1.8, label: "Express.js" },
-  { id: "mysql", x: 550, y: 170, floatDuration: 4.4, delay: 2.3, label: "MySQL" },
-  { id: "git", x: 660, y: 220, floatDuration: 3.7, delay: 2.8, label: "Git / GitHub" },
-
-  // Lower Flank Tier
-  { id: "mui", x: 80, y: 310, floatDuration: 4.7, delay: 0.3, label: "MUI Design" },
-  { id: "reactquery", x: 230, y: 280, floatDuration: 4.2, delay: 1.1, label: "React Query" },
-  { id: "php", x: 590, y: 280, floatDuration: 4.5, delay: 1.9, label: "PHP Server" },
-  { id: "apexcharts", x: 740, y: 310, floatDuration: 4.0, delay: 2.6, label: "ApexCharts" },
+// 3 Concentric Orbit Rings Definitions (Compact & Responsive with % Radii)
+const orbitRings = [
+  {
+    tier: "inner" as const,
+    label: "Core Frontend",
+    duration: "26s",
+    radiusPercent: 21,
+    nodes: ["react", "nextjs", "typescript", "tailwind"],
+    direction: "cw" as const,
+    ringColor: "dark:border-[#c8cb6d]/30 border-[#5c6b2f]/35",
+  },
+  {
+    tier: "mid" as const,
+    label: "Full-Stack & DB",
+    duration: "36s",
+    radiusPercent: 33,
+    nodes: ["nodejs", "express", "mongodb", "mysql", "redux"],
+    direction: "ccw" as const,
+    ringColor: "dark:border-[#10b981]/25 border-[#10b981]/30",
+  },
+  {
+    tier: "outer" as const,
+    label: "Ecosystem & DevOps",
+    duration: "48s",
+    radiusPercent: 45,
+    nodes: ["javascript", "git", "reactquery", "apexcharts", "php", "mui"],
+    direction: "cw" as const,
+    ringColor: "dark:border-[#e2e58c]/20 border-[#7e8a42]/30",
+  },
 ];
 
 export function TechOrbShowcase() {
   const [selectedTech, setSelectedTech] = useState<TechDetail | null>(null);
-  const [hoveredTechId, setHoveredTechId] = useState<string | null>(null);
+  const [hoveredTechId, setHoveredTechId] = useState<string | null>("react");
   const [activeCategory, setActiveCategory] = useState<string>("All");
-
-  const coreX = 410;
-  const coreY = 380;
+  const [isPaused, setIsPaused] = useState<boolean>(false);
 
   const categories = [
     { key: "All", label: "All Stack (15)" },
-    { key: "Frontend", label: "Frontend (7)" },
-    { key: "Backend", label: "Backend & DB (5)" },
-    { key: "State & Tools", label: "State & DevOps (3)" },
+    { key: "Frontend", label: "Frontend" },
+    { key: "Backend", label: "Backend & DB" },
+    { key: "State & Tools", label: "DevOps & Tools" },
   ];
-
-  const handleOpenTech = (id: string) => {
-    if (techDetailsData[id]) {
-      setSelectedTech(techDetailsData[id]);
-    }
-  };
 
   const isNodeActive = (nodeId: string) => {
     if (activeCategory === "All") return true;
@@ -382,246 +375,277 @@ export function TechOrbShowcase() {
     return tech.category === activeCategory;
   };
 
+  const activeTech = techDetailsData[hoveredTechId || "react"] || techDetailsData["react"];
+
   return (
-    <div className="relative w-full max-w-6xl mx-auto my-12 pt-4 pb-16 flex flex-col items-center justify-center overflow-hidden">
+    <div className="relative w-full max-w-4xl mx-auto my-6 flex flex-col items-center justify-center">
       
-      {/* Category Filter Deck */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-6 z-20">
-        {categories.map((cat) => {
-          const isActive = activeCategory === cat.key;
+      {/* Top Controls Bar: Categories Filter + Pause Toggle */}
+      <div className="w-full flex flex-wrap items-center justify-between gap-3 mb-6 px-2 z-20">
+        
+        {/* Category Pills */}
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat.key;
+            return (
+              <button
+                key={cat.key}
+                onClick={() => setActiveCategory(cat.key)}
+                className={`px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono transition-all duration-300 cursor-pointer flex items-center gap-1.5 shadow-sm ${
+                  isActive
+                    ? "dark:bg-[#c8cb6d] bg-[#c8cb6d]/35 dark:text-stone-950 text-[#2d3a12] border dark:border-[#c8cb6d] border-[#7e8a42]/50 font-bold shadow-sm scale-105"
+                    : "dark:bg-white/[0.04] bg-stone-100 dark:text-stone-400 text-stone-700 dark:border-white/10 border-stone-200 hover:dark:text-white hover:text-stone-950 hover:dark:bg-white/[0.08] hover:bg-stone-200"
+                }`}
+              >
+                {isActive && <span className="w-1.5 h-1.5 rounded-full dark:bg-stone-950 bg-[#2d3a12] animate-ping" />}
+                <span>{cat.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Orbit Freeze Toggle Button */}
+        <button
+          onClick={() => setIsPaused(!isPaused)}
+          className="inline-flex items-center gap-1.5 px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono dark:bg-white/[0.05] bg-stone-100 dark:border-white/10 border-stone-200 dark:text-stone-300 text-stone-700 hover:dark:text-white hover:text-stone-900 transition-colors shadow-sm cursor-pointer ml-auto"
+          title="Pause or Resume Orbits"
+        >
+          {isPaused ? (
+            <>
+              <Play className="w-3 h-3 text-[#10b981] fill-current" />
+              <span>Orbit Paused</span>
+            </>
+          ) : (
+            <>
+              <Pause className="w-3 h-3 text-[#c8cb6d] fill-current" />
+              <span className="hidden sm:inline">Orbit Active</span>
+              <span className="sm:hidden">Active</span>
+            </>
+          )}
+        </button>
+      </div>
+
+      {/* ========================================================================= */}
+      {/* COMPACT CONCENTRIC 3D PLANETARY ORBIT CANVAS                             */}
+      {/* ========================================================================= */}
+      <div 
+        className="relative w-[340px] h-[340px] xs:w-[360px] xs:h-[360px] sm:w-[460px] sm:h-[460px] md:w-[480px] md:h-[480px] flex items-center justify-center my-2 select-none overflow-visible"
+        style={{
+          // When user hovers on canvas, orbit gently pauses
+        }}
+      >
+        {/* Soft Radial Ambient Glow */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#7e8a42]/10 via-[#c8cb6d]/10 to-transparent blur-3xl pointer-events-none -z-10" />
+
+        {/* --------------------------------------------------------------------- */}
+        {/* CENTRAL GLOWING CORE (HP SUN)                                         */}
+        {/* --------------------------------------------------------------------- */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+          {/* Pulsing Atmosphere Wave */}
+          <div className="absolute -inset-3 rounded-full bg-[#10b981]/20 animate-ping pointer-events-none" />
+          <div className="absolute -inset-1.5 rounded-full bg-[#c8cb6d]/15 animate-pulse pointer-events-none" />
+
+          <motion.div
+            animate={{
+              scale: [1, 1.05, 1],
+              boxShadow: [
+                "0 0 25px rgba(200,203,109,0.35), 0 0 50px rgba(16,185,129,0.2)",
+                "0 0 45px rgba(200,203,109,0.6), 0 0 75px rgba(16,185,129,0.4)",
+                "0 0 25px rgba(200,203,109,0.35), 0 0 50px rgba(16,185,129,0.2)",
+              ],
+            }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="w-14 h-14 sm:w-18 sm:h-18 rounded-full bg-gradient-to-tr from-[#0d160f] via-[#1a281c] to-[#0a110b] dark:border-2 border-[1.5px] dark:border-[#c8cb6d] border-[#5c6b2f] flex flex-col items-center justify-center shadow-xl group cursor-pointer relative"
+          >
+            {/* Inner Rotating Aura Ring */}
+            <div className="absolute inset-1 rounded-full border border-dashed border-[#e2e58c]/40 animate-spin-conic pointer-events-none" />
+            
+            <span className="text-sm sm:text-base font-mono font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-[#e2e58c] to-[#c8cb6d]">
+              HP
+            </span>
+            <span className="text-[7px] sm:text-[8px] font-mono text-[#10b981] font-bold tracking-widest uppercase">
+              CORE
+            </span>
+          </motion.div>
+        </div>
+
+        {/* --------------------------------------------------------------------- */}
+        {/* 3 CONCENTRIC ORBITAL RINGS & SATELLITE PLANET NODES                   */}
+        {/* --------------------------------------------------------------------- */}
+        {orbitRings.map((ring) => {
+          const isClockwise = ring.direction === "cw";
+          const spinClass = isClockwise ? "animate-orbit-cw" : "animate-orbit-ccw";
+          const counterClass = isClockwise ? "animate-orbit-counter-cw" : "animate-orbit-counter-ccw";
+          const diameterPercent = ring.radiusPercent * 2;
+
           return (
-            <button
-              key={cat.key}
-              onClick={() => setActiveCategory(cat.key)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition-all duration-300 cursor-pointer flex items-center gap-1.5 shadow-sm ${
-                isActive
-                  ? "dark:bg-[#c8cb6d] bg-[#5c6b2f] text-stone-950 font-black shadow-[0_0_20px_rgba(200,203,109,0.4)] scale-105"
-                  : "dark:bg-white/[0.04] bg-stone-100 dark:text-stone-400 text-stone-700 dark:border-white/10 border-stone-200 hover:dark:text-white hover:text-stone-950 hover:dark:bg-white/[0.08] hover:bg-stone-200"
-              }`}
-            >
-              {isActive && <span className="w-1.5 h-1.5 rounded-full bg-stone-950 animate-ping" />}
-              <span>{cat.label}</span>
-            </button>
+            <React.Fragment key={ring.tier}>
+              {/* Circular Dotted Orbit Track Line */}
+              <div
+                className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed ${ring.ringColor} pointer-events-none -z-0 transition-opacity duration-300`}
+                style={{
+                  width: `${diameterPercent}%`,
+                  height: `${diameterPercent}%`,
+                }}
+              />
+
+              {/* Rotating Container for Planets on this Ring */}
+              <div
+                className={`absolute inset-0 rounded-full ${spinClass} pointer-events-none`}
+                style={{
+                  // @ts-expect-error custom property for duration
+                  "--orbit-dur": ring.duration,
+                  animationPlayState: isPaused ? "paused" : "running",
+                }}
+              >
+                {ring.nodes.map((nodeId, idx) => {
+                  const tech = techDetailsData[nodeId];
+                  if (!tech) return null;
+                  const isMatch = isNodeActive(nodeId);
+                  const isHovered = hoveredTechId === nodeId;
+                  const total = ring.nodes.length;
+                  const angleDeg = (idx * 360) / total;
+                  const angleRad = ((angleDeg - 90) * Math.PI) / 180;
+                  const leftPos = 50 + Math.cos(angleRad) * ring.radiusPercent;
+                  const topPos = 50 + Math.sin(angleRad) * ring.radiusPercent;
+
+                  return (
+                    <div
+                      key={nodeId}
+                      className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
+                      style={{
+                        left: `${leftPos}%`,
+                        top: `${topPos}%`,
+                      }}
+                    >
+                      {/* Counter-Spin Wrapper so Icons Stay Upright */}
+                      <div
+                        className={counterClass}
+                        style={{
+                          // @ts-expect-error custom property for duration
+                          "--orbit-dur": ring.duration,
+                          animationPlayState: isPaused ? "paused" : "running",
+                        }}
+                      >
+                        <motion.button
+                          onClick={() => {
+                            setHoveredTechId(nodeId);
+                            setSelectedTech(tech);
+                          }}
+                          onMouseEnter={() => setHoveredTechId(nodeId)}
+                          whileHover={{ scale: 1.25, zIndex: 40 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={`relative group/node p-1.5 sm:p-2 rounded-xl sm:rounded-2xl backdrop-blur-xl transition-all duration-300 flex items-center justify-center cursor-pointer shadow-md ${
+                            isHovered
+                              ? "dark:bg-zinc-900 bg-white border-2 border-[#c8cb6d] shadow-[0_0_25px_rgba(200,203,109,0.7)] scale-110 z-30"
+                              : isMatch
+                              ? "dark:bg-zinc-950/90 bg-white/95 border dark:border-white/15 border-stone-200 hover:border-[#c8cb6d]"
+                              : "dark:bg-zinc-950/40 bg-stone-100/60 border dark:border-white/5 border-stone-200 opacity-30 hover:opacity-100"
+                          }`}
+                          style={{
+                            boxShadow: isHovered
+                              ? `0 0 25px ${tech.color}90, 0 0 10px rgba(200,203,109,0.5)`
+                              : undefined,
+                          }}
+                          aria-label={`Inspect ${tech.name}`}
+                        >
+                          {/* Tech Brand Icon */}
+                          <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center shrink-0">
+                            {getTechIcon(tech.name, { className: "w-4 h-4 sm:w-5 sm:h-5" })}
+                          </div>
+
+                          {/* Mini Brand Dot */}
+                          <span
+                            className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full border border-white dark:border-zinc-950 shadow-sm"
+                            style={{ backgroundColor: tech.color }}
+                          />
+
+                          {/* Hover Tooltip Label */}
+                          <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 group-hover/node:opacity-100 transition-opacity pointer-events-none z-50">
+                            <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold dark:bg-black bg-stone-900 text-white shadow-md border dark:border-white/15 border-stone-700">
+                              {tech.name}
+                            </span>
+                          </div>
+                        </motion.button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </React.Fragment>
           );
         })}
       </div>
 
-      {/* Interactive Helper Banner */}
-      <div className="flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full dark:bg-white/[0.04] bg-stone-100 dark:border-white/10 border-stone-200 text-xs font-mono dark:text-stone-300 text-stone-700 shadow-sm z-20">
-        <Activity className="w-3.5 h-3.5 text-[#10b981] animate-pulse" />
-        <span>Live Constellation • Click any moving planet node to inspect engineering specs</span>
-      </div>
-
-      {/* Main Galaxy Constellation SVG & Node Canvas */}
-      <div className="relative w-full max-w-5xl h-[480px] sm:h-[520px] md:h-[560px] flex items-center justify-center">
-        
-        {/* Ambient Core Radial Glows */}
-        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-[550px] h-[340px] rounded-full bg-gradient-to-t from-[#7e8a42]/25 via-[#c8cb6d]/15 to-transparent blur-3xl -z-10 pointer-events-none" />
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-[260px] h-[260px] rounded-full bg-[#10b981]/20 blur-2xl -z-10 pointer-events-none" />
-
-        {/* ========================================================================= */}
-        {/* SVG LASER ENERGY BEAMS WITH ANIMATED FLOWING CURRENT                       */}
-        {/* ========================================================================= */}
-        <svg
-          className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
-          viewBox="0 0 820 540"
-          preserveAspectRatio="xMidYMid meet"
+      {/* ========================================================================= */}
+      {/* COMPACT ACTIVE TELEMETRY HUD DOCK (Below Orbit)                           */}
+      {/* ========================================================================= */}
+      <div className="w-full max-w-xl mx-auto mt-4 z-20">
+        <motion.div
+          key={activeTech.id}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25 }}
+          className="p-3.5 sm:p-4 rounded-2xl glass-panel border dark:border-white/10 border-stone-200/90 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 relative overflow-hidden group/hud"
         >
-          <defs>
-            {/* Standard Beaming Fiber Gradient */}
-            <linearGradient id="laserBeamGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stopColor="#c8cb6d" stopOpacity="0.85" />
-              <stop offset="60%" stopColor="#10b981" stopOpacity="0.45" />
-              <stop offset="100%" stopColor="#c8cb6d" stopOpacity="0.15" />
-            </linearGradient>
+          {/* Subtle Accent Glow */}
+          <div
+            className="absolute -right-8 -top-8 w-32 h-32 rounded-full blur-2xl opacity-20 pointer-events-none"
+            style={{ backgroundColor: activeTech.color }}
+          />
 
-            {/* High-Energy Active Laser Gradient */}
-            <linearGradient id="laserActiveBeamGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
-              <stop offset="40%" stopColor="#e2e58c" stopOpacity="0.95" />
-              <stop offset="80%" stopColor="#10b981" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#c8cb6d" stopOpacity="0.8" />
-            </linearGradient>
-
-            {/* Glowing Laser Filter */}
-            <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-          </defs>
-
-          {/* Draw connecting curved energy threads to each node */}
-          {constellationNodes.map((node) => {
-            const isHovered = hoveredTechId === node.id;
-            const isMatch = isNodeActive(node.id);
-            const midControlX = (coreX + node.x) / 2 + (node.x > coreX ? -20 : 20);
-            const midControlY = (coreY + node.y) / 2 + 30;
-
-            const pathData = `M ${coreX} ${coreY} Q ${midControlX} ${midControlY}, ${node.x} ${node.y}`;
-
-            return (
-              <g key={`laser-${node.id}`}>
-                {/* Background base path */}
-                <path
-                  d={pathData}
-                  fill="none"
-                  stroke={isHovered ? "url(#laserActiveBeamGrad)" : "url(#laserBeamGrad)"}
-                  strokeWidth={isHovered ? 2.5 : isMatch ? 1.2 : 0.4}
-                  strokeDasharray={isHovered ? "none" : isMatch ? "4 4" : "2 6"}
-                  opacity={isHovered ? 1 : isMatch ? 0.6 : 0.15}
-                  filter={isHovered ? "url(#glowFilter)" : undefined}
-                  className="transition-all duration-300"
-                />
-
-                {/* Animated Glowing Laser Pulse dot traveling along path */}
-                {isMatch && (
-                  <circle r={isHovered ? 3.5 : 2} fill={isHovered ? "#ffffff" : "#c8cb6d"}>
-                    <animateMotion
-                      path={pathData}
-                      dur={`${3 + (node.delay % 2)}s`}
-                      repeatCount="indefinite"
-                      rotate="auto"
-                      keyPoints="0;1"
-                      keyTimes="0;1"
-                    />
-                  </circle>
-                )}
-              </g>
-            );
-          })}
-        </svg>
-
-        {/* ========================================================================= */}
-        {/* 3D ROTATING ORBITAL RINGS (Tilted Perspective)                             */}
-        {/* ========================================================================= */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-[340px] sm:w-[500px] md:w-[680px] h-[140px] sm:h-[180px] md:h-[220px] pointer-events-none -z-0">
-          {/* Outer Ring with Travelling Satellite */}
-          <div className="absolute inset-0 rounded-[50%] border border-[#c8cb6d]/25 shadow-[0_0_20px_rgba(200,203,109,0.15)] animate-[spin_36s_linear_infinite]" />
-          
-          {/* Middle Ring */}
-          <div className="absolute inset-[20px] sm:inset-[35px] rounded-[50%] border border-[#10b981]/25 shadow-[0_0_15px_rgba(16,185,129,0.15)] animate-[spin_26s_linear_infinite_reverse]" />
-          
-          {/* Inner Ring */}
-          <div className="absolute inset-[45px] sm:inset-[70px] rounded-[50%] border border-[#e2e58c]/35 shadow-[0_0_25px_rgba(226,229,140,0.2)] animate-[spin_18s_linear_infinite]" />
-        </div>
-
-        {/* ========================================================================= */}
-        {/* CENTRAL GLOWING LOGO ORB (HP CORE)                                        */}
-        {/* ========================================================================= */}
-        <div className="absolute bottom-10 sm:bottom-12 left-1/2 -translate-x-1/2 z-10">
-          {/* Concentric Pulse Waves */}
-          <div className="absolute inset-0 rounded-full bg-[#10b981]/20 animate-ping pointer-events-none" />
-          <div className="absolute -inset-4 rounded-full bg-[#c8cb6d]/10 animate-pulse pointer-events-none" />
-
-          <motion.div
-            animate={{
-              scale: [1, 1.06, 1],
-              boxShadow: [
-                "0 0 35px rgba(200,203,109,0.45), 0 0 70px rgba(16,185,129,0.3)",
-                "0 0 60px rgba(200,203,109,0.7), 0 0 100px rgba(16,185,129,0.5)",
-                "0 0 35px rgba(200,203,109,0.45), 0 0 70px rgba(16,185,129,0.3)",
-              ],
-            }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="w-22 h-22 sm:w-26 sm:h-26 md:w-30 md:h-30 rounded-full bg-gradient-to-tr from-[#0d160f] via-[#1a281c] to-[#0a110b] border-2 border-[#c8cb6d] flex items-center justify-center shadow-2xl group cursor-pointer relative"
-          >
-            {/* Inner Rotating Aura Ring */}
-            <div className="absolute inset-1.5 rounded-full border border-dashed border-[#e2e58c]/50 animate-spin-conic pointer-events-none" />
-            
-            {/* Stylized Monogram Logo */}
-            <div className="flex flex-col items-center justify-center text-center select-none">
-              <span className="text-2xl sm:text-3xl font-mono font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-[#e2e58c] to-[#c8cb6d] drop-shadow-[0_0_15px_#c8cb6d]">
-                HP
-              </span>
-              <span className="text-[8.5px] sm:text-[9.5px] font-mono text-[#10b981] font-bold tracking-widest uppercase flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-ping" />
-                CORE
-              </span>
+          {/* Left: Icon + Specs */}
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl dark:bg-white/[0.06] bg-stone-100 dark:border-white/10 border-stone-200 flex items-center justify-center shrink-0 shadow-sm">
+              {getTechIcon(activeTech.name, { className: "w-6 h-6 sm:w-7 sm:h-7" })}
             </div>
-          </motion.div>
-        </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="text-sm sm:text-base font-bold dark:text-white text-stone-900">
+                  {activeTech.name}
+                </h4>
+                <Badge variant="accent" size="sm">
+                  {activeTech.level}
+                </Badge>
+              </div>
+              <p className="text-[11px] font-mono dark:text-[#c8cb6d] text-[#4d5e24] font-semibold">
+                {activeTech.category} • {activeTech.experience}
+              </p>
+            </div>
+          </div>
 
-        {/* ========================================================================= */}
-        {/* FLOATING SATELLITE TECH NODES (Planetary Constellation Grid)               */}
-        {/* ========================================================================= */}
-        <div className="absolute inset-0 pointer-events-auto">
-          {constellationNodes.map((node) => {
-            const tech = techDetailsData[node.id];
-            if (!tech) return null;
-            const techIcon = getTechIcon(tech.name, { className: "w-5 h-5 sm:w-6 sm:h-6" });
-            const isHovered = hoveredTechId === node.id;
-            const isMatch = isNodeActive(node.id);
-
-            // Calculate percentage position
-            const leftPercent = (node.x / 820) * 100;
-            const topPercent = (node.y / 540) * 100;
-
-            return (
-              <motion.div
-                key={node.id}
-                style={{
-                  position: "absolute",
-                  left: `${leftPercent}%`,
-                  top: `${topPercent}%`,
-                }}
-                animate={{
-                  y: [-8, 8, -8],
-                  rotate: [-2, 2, -2],
-                }}
-                transition={{
-                  duration: node.floatDuration,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: node.delay,
-                }}
-                whileHover={{ scale: 1.3, zIndex: 40 }}
-                onMouseEnter={() => setHoveredTechId(node.id)}
-                onMouseLeave={() => setHoveredTechId(null)}
-                onClick={() => handleOpenTech(node.id)}
-                className={`group cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 ${
-                  isMatch ? "opacity-100" : "opacity-30 hover:opacity-100"
-                }`}
+          {/* Middle: Shipped In Pill Badges */}
+          <div className="hidden md:flex flex-wrap items-center gap-1 max-w-[200px]">
+            {activeTech.usedInProjects.slice(0, 2).map((proj) => (
+              <span
+                key={proj}
+                className="px-2 py-0.5 rounded-md text-[10px] font-mono font-medium dark:bg-white/[0.05] bg-stone-100 dark:text-stone-300 text-stone-700 truncate"
               >
-                {/* Glowing Aura Ring & Planet Card */}
-                <div
-                  className={`relative p-2.5 sm:p-3 rounded-2xl backdrop-blur-xl transition-all duration-300 flex items-center justify-center shadow-lg ${
-                    isHovered
-                      ? "dark:bg-zinc-900 bg-white border-2 border-[#c8cb6d] shadow-[0_0_30px_rgba(200,203,109,0.7)]"
-                      : isMatch
-                      ? "dark:bg-zinc-950/90 bg-white/95 border dark:border-white/15 border-stone-200 hover:border-[#c8cb6d] shadow-[0_0_15px_rgba(0,0,0,0.2)]"
-                      : "dark:bg-zinc-950/60 bg-stone-100/70 border dark:border-white/5 border-stone-200"
-                  }`}
-                  style={{
-                    boxShadow: isHovered
-                      ? `0 0 35px ${tech.color}80, 0 0 15px rgba(200,203,109,0.5)`
-                      : undefined,
-                  }}
-                >
-                  {techIcon}
-                  
-                  {/* Pulsing indicator dot */}
-                  <span
-                    className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full border-2 dark:border-zinc-950 border-white shadow-sm"
-                    style={{ backgroundColor: tech.color || "#10b981" }}
-                  />
-                </div>
+                {proj}
+              </span>
+            ))}
+            {activeTech.usedInProjects.length > 2 && (
+              <span className="text-[10px] font-mono dark:text-stone-400 text-stone-600">
+                +{activeTech.usedInProjects.length - 2}
+              </span>
+            )}
+          </div>
 
-                {/* Floating Micro Label */}
-                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-85 group-hover:opacity-100 transition-opacity">
-                  <span
-                    className={`px-2 py-0.5 rounded-md text-[9.5px] sm:text-[10px] font-mono shadow-md transition-colors ${
-                      isHovered
-                        ? "dark:bg-black bg-stone-900 text-[#e2e58c] font-bold border border-[#c8cb6d]/50"
-                        : "dark:bg-black/85 bg-white/95 dark:text-stone-300 text-stone-800 dark:border-white/10 border-stone-300 font-semibold"
-                    }`}
-                  >
-                    {node.label}
-                  </span>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+          {/* Right: Inspect Button */}
+          <button
+            onClick={() => setSelectedTech(activeTech)}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#7e8a42]/30 to-[#c8cb6d]/30 hover:from-[#7e8a42]/50 hover:to-[#c8cb6d]/50 border dark:border-[#c8cb6d]/40 border-[#5c6b2f]/40 dark:text-white text-[#344415] text-xs font-bold transition-all shadow-sm shrink-0 cursor-pointer"
+          >
+            <span>Inspect Spec</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </button>
+        </motion.div>
+
+        {/* Small Helper Legend */}
+        <p className="text-[11px] font-mono dark:text-stone-400 text-stone-600 text-center mt-2.5 flex items-center justify-center gap-1.5">
+          <Activity className="w-3 h-3 text-[#10b981] animate-pulse" />
+          <span>Interactive 3D Planetary Orbit • Tap or hover any node to inspect specs</span>
+        </p>
       </div>
 
       {/* ========================================================================= */}

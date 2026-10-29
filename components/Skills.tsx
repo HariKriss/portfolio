@@ -79,7 +79,7 @@ export function Skills() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-semibold transition-all duration-300 cursor-pointer ${
                 selectedCategory === cat
-                  ? "bg-gradient-to-r from-[#7e8a42] to-[#c8cb6d] text-stone-950 font-bold shadow-lg shadow-[#c8cb6d]/20 scale-105 border border-[#c8cb6d]/40"
+                  ? "dark:bg-gradient-to-r dark:from-[#7e8a42] dark:to-[#c8cb6d] bg-[#c8cb6d]/35 dark:text-stone-950 text-[#2d3a12] font-bold shadow-md shadow-[#c8cb6d]/20 scale-105 border dark:border-[#c8cb6d]/40 border-[#7e8a42]/50"
                   : "dark:bg-white/[0.04] bg-stone-100 dark:text-stone-400 text-stone-700 hover:dark:text-white hover:text-stone-950 dark:border-white/10 border-stone-200 hover:bg-stone-200"
               }`}
             >

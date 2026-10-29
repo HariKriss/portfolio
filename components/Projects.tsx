@@ -19,7 +19,8 @@ import {
   BarChart3,
   Layers,
   ChevronRight,
-  ShieldCheck
+  ShieldCheck,
+  Building2
 } from "lucide-react";
 import Image from "next/image";
 
@@ -57,7 +58,7 @@ export function Projects() {
             {/* Subtle Gradient Glow at Header */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#c8cb6d]/15 via-[#7e8a42]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            {/* Top Bar: Superpower Badge & International Client Pill */}
+            {/* Top Bar: Superpower Badge, Company & International Client Pill */}
             <div className="flex flex-wrap items-center justify-between gap-3 mb-8">
               <div className="flex flex-wrap items-center gap-2.5">
                 <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-[#7e8a42] to-[#c8cb6d] text-stone-950 shadow-lg shadow-[#c8cb6d]/30">
@@ -69,9 +70,15 @@ export function Projects() {
                 </Badge>
               </div>
 
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#c8cb6d]/10 text-[#e2e58c] border border-[#c8cb6d]/25 text-xs font-medium">
-                <Globe2 className="w-3.5 h-3.5 text-[#c8cb6d]" />
-                <span>Dubai Client Collaboration</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full dark:bg-white/[0.08] bg-stone-100 dark:text-stone-300 text-stone-800 border dark:border-white/10 border-stone-200 text-xs font-semibold">
+                  <Building2 className="w-3.5 h-3.5 text-[#10b981]" />
+                  <span>Oceansoftwares</span>
+                </div>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#c8cb6d]/10 text-[#e2e58c] border border-[#c8cb6d]/25 text-xs font-medium">
+                  <Globe2 className="w-3.5 h-3.5 text-[#c8cb6d]" />
+                  <span>Dubai Client Collaboration</span>
+                </div>
               </div>
             </div>
 

@@ -13,6 +13,7 @@ export interface Project {
   modules?: string[];
   isFeatured?: boolean;
   client?: string;
+  company?: string;
   duration?: string;
   liveDemoUrl?: string;
   githubUrl?: string;
@@ -161,30 +162,33 @@ export const experienceData: ExperienceItem[] = [
     location: "Chennai, India",
     type: "Full-Time",
     description:
-      "Leading modern frontend initiatives, architecting modular React/Next.js systems, and collaborating on high-impact client deliverables.",
+      "Leading modern frontend & full-stack initiatives, architecting modular React/Next.js systems, and delivering key client platforms including Syncraze (Dubai Client), CNI Business Forum, Aram Enterprises, and The Star Business.",
     achievements: [
-      "Engineered reusable component libraries and robust design systems reducing feature delivery times.",
-      "Spearheaded client-facing module enhancements with seamless REST API integrations and state caching.",
-      "Optimized bundle size and render performance through intelligent code-splitting and memoization.",
+      "Architected Syncraze flagship operations platform across 9+ enterprise modules with real-time analytics and bulk Excel IO for a Dubai-based enterprise client.",
+      "Engineered responsive portals and reusable component libraries for CNI Business Forum, Aram Enterprises, and The Star Business.",
+      "Collaborated directly with international stakeholders (Dubai enterprise client) for requirement gathering, API integration, and production deployment.",
+      "Built resilient backend services and REST APIs with Node.js and MongoDB for high-throughput enterprise modules.",
+      "Optimized bundle size and render performance through intelligent code-splitting, memoization, and React Query caching.",
     ],
-    technologies: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "React Query", "Git"],
+    technologies: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB", "React Query", "Git"],
   },
   {
     id: "exp-2",
     company: "Redblox Technologies Pvt Ltd",
-    role: "Frontend Developer",
+    role: "Junior Software Developer",
     period: "Dec 2022 – Jan 2025",
-    location: "Chennai, India",
+    location: "Pondicherry, India",
     type: "Full-Time",
     description:
-      "Engineered mission-critical web applications, enterprise dashboards, and custom client platforms spanning multi-industry domains.",
+      "Engineered mission-critical web applications, responsive user interfaces, and interactive platforms including Mellowplex (AI Gamified Movie Metaverse) and Gaston.",
     achievements: [
-      "Built and delivered 5+ comprehensive web applications with pixel-perfect responsive layouts.",
-      "Collaborated directly with international stakeholders (Dubai-based enterprise client) for requirement gathering and deployment.",
-      "Implemented complex business logic, Excel bulk data imports, and dynamic ApexCharts visualizations.",
-      "Integrated secure authentication, role-based license management, and asynchronous data streams.",
+      "Architected scalable frontend components and smart React Query caching for Mellowplex (AI Gamified Movie Metaverse Platform).",
+      "Engineered Gaston real-time telemetry web application using custom React Hooks, low-latency API sync, and 60% re-render reduction.",
+      "Built pixel-perfect responsive layouts, dynamic ApexCharts visual telemetry, and complex business logic.",
+      "Integrated secure authentication, role-based access management, and asynchronous data streams with Redux.",
+      "Maintained backend services with PHP and MySQL, optimizing database queries and API response times.",
     ],
-    technologies: ["React.js", "Next.js", "TypeScript", "MUI", "Redux", "ApexCharts", "PHP", "MySQL"],
+    technologies: ["React.js", "JavaScript", "MUI", "Redux", "ApexCharts", "PHP", "MySQL", "Git"],
   },
 ];
 
@@ -196,6 +200,7 @@ export const projectsData: Project[] = [
     category: "Enterprise SaaS / ERP",
     superpower: "Enterprise Scale",
     isFeatured: true,
+    company: "Oceansoftwares Private Limited",
     client: "Dubai Enterprise Client",
     duration: "Flagship Production Deployment",
     image: "/assets/syncraze.png",
@@ -245,6 +250,7 @@ export const projectsData: Project[] = [
     subtitle: "AI Gamified Movie Metaverse Platform",
     category: "AI & Metaverse / Web Platform",
     superpower: "Metaverse & VR UX",
+    company: "Redblox Technologies Pvt Ltd",
     image: "/assets/melloplex.png",
     liveDemoUrl: "https://www.linkedin.com/company/mellowplex/about/",
     description:
@@ -278,6 +284,7 @@ export const projectsData: Project[] = [
     subtitle: "Real-Time Telemetry & Data Stream Dashboard",
     category: "Real-time Web App",
     superpower: "Real-time Data",
+    company: "Redblox Technologies Pvt Ltd",
     image: "/assets/gaston.jpg",
     description:
       "Modular real-time web application engineered with custom React Hooks, low-latency API handling, and optimized re-render prevention.",
@@ -307,6 +314,7 @@ export const projectsData: Project[] = [
     subtitle: "Business Networking & Modular Enterprise Portal",
     category: "Enterprise Web App",
     superpower: "Reusable Architecture",
+    company: "Oceansoftwares Private Limited",
     image: "/assets/cni.png",
     liveDemoUrl: "https://cnibusinessforum.in/",
     description:
@@ -331,6 +339,7 @@ export const projectsData: Project[] = [
     subtitle: "Chit Fund & Financial Growth Web Platform",
     category: "Fintech / Web Platform",
     superpower: "Financial Growth & Ledger",
+    company: "Oceansoftwares Private Limited",
     image: "/assets/aram-enterprises.png",
     liveDemoUrl: "https://asvchitfunds.com/",
     description:
@@ -356,6 +365,7 @@ export const projectsData: Project[] = [
     subtitle: "Enterprise Business Portal & Multi-Module Web System",
     category: "Web Application",
     superpower: "Responsive Engineering",
+    company: "Oceansoftwares Private Limited",
     image: "/assets/star.png",
     liveDemoUrl: "https://thestarbusiness.com/",
     description:

@@ -4,298 +4,396 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { experienceData } from "@/lib/data";
 import { SectionHeading } from "./ui/SectionHeading";
-import { Badge } from "./ui/Badge";
 import { getTechIcon } from "./ui/TechIcons";
 import { 
-  Terminal, 
-  Code2, 
-  Play, 
-  GitBranch, 
-  CheckCircle2, 
-  Layers, 
-  Cpu, 
-  Boxes, 
-  Workflow, 
-  Zap, 
   Building2, 
   Calendar, 
-  MapPin 
+  MapPin, 
+  CheckCircle2, 
+  Globe2, 
+  Zap, 
+  Layers, 
+  ArrowRight,
+  Sparkles,
+  Server,
+  Boxes,
+  Briefcase,
+  ChevronRight,
+  TrendingUp,
+  Award
 } from "lucide-react";
 
 export function Experience() {
-  const [activeTab, setActiveTab] = useState<number>(0);
-  const [isTerminalRunning, setIsTerminalRunning] = useState<boolean>(false);
-  const [terminalLogs, setTerminalLogs] = useState<string[]>([]);
+  const [selectedCompanyId, setSelectedCompanyId] = useState<string>("exp-1");
 
-  const activeExp = experienceData[activeTab];
+  const oceansoftwares = experienceData.find((e) => e.id === "exp-1") || experienceData[0];
+  const redblox = experienceData.find((e) => e.id === "exp-2") || experienceData[1];
 
-  const codeSnippets = [
-    `// Oceansoftwares Private Limited — Frontend Architecture
-import { NextApp, ReactQuery, TypeScript } from "@core/frontend";
-import { DubaiClientCollab } from "@enterprise/deployment";
-
-export class OceansoftwaresEngineer implements FrontendLead {
-  readonly role = "Frontend Developer";
-  readonly period = "Nov 2025 – Present";
-  readonly location = "Chennai, India";
-  
-  public async buildScalableArchitecture(): Promise<DeploymentResult> {
-    const modules = await this.engineerReusableSystems({
-      framework: "Next.js 14 / React.js",
-      typeSafety: "TypeScript Strict",
-      stateCaching: "React Query (TanStack)",
-      styling: "Tailwind CSS + Glassmorphism"
-    });
-
-    // Performance optimizations: code-splitting & memoization
-    const performanceScore = await modules.optimizeRendering();
-    return { status: "ACTIVE_IN_PRODUCTION", score: 99 };
-  }
-}`,
-    `// Redblox Technologies Pvt Ltd — Enterprise Multi-Module Suite
-import { ReduxToolkit, MUI, ApexCharts } from "@enterprise/core";
-import { ExcelEngine, LicenseSecurity } from "@syncraze/modules";
-
-export const RedbloxContributions = {
-  company: "Redblox Technologies Pvt Ltd",
-  period: "Dec 2022 – Jan 2025",
-  clientScope: "Dubai International Enterprise",
-  
-  deliverables: [
-    "5+ Full-Scale Web Applications",
-    "9+ Syncraze Modules: HR, Fleet, HSE, Inventory",
-    "Excel Bulk Upload IO with Real-time Validation",
-    "ApexCharts Live Business KPI Telemetry"
-  ],
-  
-  stack: ["React.js", "Next.js", "TypeScript", "MUI", "Redux", "PHP", "MySQL"],
-  deployTarget: "Dubai Enterprise Staging & Production"
-};`
+  const companies = [
+    {
+      ...oceansoftwares,
+      shortName: "Oceansoftwares",
+      initials: "OS",
+      isCurrent: true,
+      color: "#10b981",
+      accentBg: "rgba(16, 185, 129, 0.15)",
+      borderColor: "border-[#10b981]",
+      locationBadge: "Chennai, India",
+      internationalHighlight: "Dubai Client Collaboration",
+      tenureTag: "Present • Active Leadership",
+      deliveredProjects: [
+        { name: "Syncraze", role: "Dubai Enterprise Client", highlight: "9+ Modules ERP", tech: "Next.js, Node, Mongo" },
+        { name: "CNI Business Forum", role: "Business Networking", highlight: "Modular Architecture", tech: "React, Form Engine" },
+        { name: "Aram Enterprises", role: "Fintech Platform", highlight: "Chit Fund Ledger", tech: "PHP, MySQL, Responsive" },
+        { name: "The Star Business", role: "Enterprise Portal", highlight: "Multi-Module Web", tech: "React.js, REST API" },
+      ],
+      pillars: [
+        { label: "Core Architecture", val: "Next.js & React System", desc: "Modular reusable component systems" },
+        { label: "Backend Services", val: "Node.js & MongoDB", desc: "High-throughput enterprise REST APIs" },
+        { label: "Global Reach", val: "Dubai Client Project", desc: "Direct international deployment" },
+      ]
+    },
+    {
+      ...redblox,
+      shortName: "Redblox Technologies",
+      initials: "RT",
+      isCurrent: false,
+      color: "#c8cb6d",
+      accentBg: "rgba(200, 203, 109, 0.15)",
+      borderColor: "border-[#c8cb6d]",
+      locationBadge: "Pondicherry, India",
+      internationalHighlight: null,
+      tenureTag: "2+ Years Milestone",
+      deliveredProjects: [
+        { name: "Mellowplex", role: "AI Movie Metaverse Platform", highlight: "360° VR & Caching", tech: "React, Next.js, React Query" },
+        { name: "Gaston", role: "Real-Time Telemetry Dashboard", highlight: "Low-Latency Sync", tech: "React Hooks, Custom Logic" },
+      ],
+      pillars: [
+        { label: "Key Platforms", val: "Mellowplex & Gaston", desc: "AI movie metaverse & real-time telemetry" },
+        { label: "Analytics", val: "ApexCharts Visuals", desc: "Real-time telemetry & KPI widgets" },
+        { label: "Data Engine", val: "PHP & MySQL Stack", desc: "Bulk imports & role-based license auth" },
+      ]
+    }
   ];
 
-  const handleRunSimulation = () => {
-    setIsTerminalRunning(true);
-    setTerminalLogs([]);
-
-    const logs = [
-      `$ git checkout branch/feature-${activeExp.company.toLowerCase().replace(/[^a-z0-9]/g, "-")}`,
-      `$ pnpm run build:enterprise-suite`,
-      `[INFO] Validating TypeScript strict type signatures... ✔ 0 errors`,
-      `[INFO] Hydrating React Query cache layers for ${activeExp.company}...`,
-      `[INFO] Compiling ApexCharts data streams & Excel bulk upload engine...`,
-      `[SUCCESS] Production bundle generated in 3.4s (60fps animation verified)`,
-      `[DEPLOY] Shipped to Production for ${activeExp.company} (${activeExp.period})`
-    ];
-
-    logs.forEach((log, index) => {
-      setTimeout(() => {
-        setTerminalLogs((prev) => [...prev, log]);
-        if (index === logs.length - 1) {
-          setIsTerminalRunning(false);
-        }
-      }, (index + 1) * 350);
-    });
-  };
+  const activeCompany = companies.find((c) => c.id === selectedCompanyId) || companies[0];
 
   return (
     <section id="experience" className="py-24 sm:py-32 relative overflow-hidden scroll-mt-20">
-      {/* Background Cyber Ambient Glows */}
-      <div className="pointer-events-none absolute top-1/3 -left-48 w-96 h-96 bg-[#c8cb6d]/10 rounded-full blur-[140px] -z-10" />
-      <div className="pointer-events-none absolute bottom-10 -right-48 w-96 h-96 bg-[#7e8a42]/10 rounded-full blur-[140px] -z-10" />
+      {/* Background Ambient Glows */}
+      <div className="pointer-events-none absolute top-1/4 -left-48 w-96 h-96 bg-[#10b981]/10 rounded-full blur-[140px] -z-10" />
+      <div className="pointer-events-none absolute bottom-1/4 -right-48 w-96 h-96 bg-[#c8cb6d]/10 rounded-full blur-[140px] -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          badge="Work Experience"
+          badge="Interactive Career Deck"
           title="Professional Career &"
-          gradientText="Engineering Journey"
-          description="Review my industry experience, delivered projects, and software contributions across key engineering roles."
+          gradientText="Engineering Experience"
+          description="An Apple-style interactive master-detail showcase tracking software engineering in Pondicherry to full-stack enterprise architecture in Chennai with international client deliverables."
         />
 
         {/* ========================================================================= */}
-        {/* INTERACTIVE CODE STUDIO CONTAINER                                         */}
+        {/* MASTER-DETAIL CAREER DECK CONTAINER                                       */}
         {/* ========================================================================= */}
-        <div className="rounded-3xl border border-[#c8cb6d]/30 bg-zinc-950 backdrop-blur-2xl code-editor-shadow overflow-hidden shadow-2xl keep-dark">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mt-10 sm:mt-14 items-start">
           
-          {/* Top IDE Window Header Bar */}
-          <div className="px-3.5 sm:px-6 py-3 bg-zinc-900 border-b border-white/10 flex flex-wrap items-center justify-between gap-3">
-            {/* Window Dots & Branch Info */}
-            <div className="flex items-center gap-2.5 sm:gap-3">
-              <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-rose-500/90 inline-block" />
-                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-amber-500/90 inline-block" />
-                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-emerald-500/90 inline-block" />
-              </div>
-              <div className="h-4 w-[1px] bg-white/15 mx-0.5 sm:mx-1" />
-              <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-mono text-[#c8cb6d] bg-[#c8cb6d]/15 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-[#c8cb6d]/30">
-                <GitBranch className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#c8cb6d]" />
-                <span className="truncate max-w-[120px] xs:max-w-none text-[#e2e58c]">main / release-v3.0</span>
-              </div>
+          {/* ======================================================================= */}
+          {/* LEFT COLUMN: COMPANY SELECTOR CARDS (SPAN 4)                            */}
+          {/* ======================================================================= */}
+          <div className="lg:col-span-4 flex flex-col gap-3.5">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider dark:text-stone-400 text-stone-600 mb-1 flex items-center gap-1.5 px-1">
+              <Briefcase className="w-3.5 h-3.5 text-[#10b981]" />
+              <span>Career Positions ({companies.length})</span>
+            </span>
+
+            {/* Company Selector Tab Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+              {companies.map((company) => {
+                const isSelected = selectedCompanyId === company.id;
+
+                return (
+                  <motion.button
+                    key={company.id}
+                    onClick={() => setSelectedCompanyId(company.id)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`relative p-5 sm:p-5.5 rounded-3xl text-left transition-all duration-300 cursor-pointer overflow-hidden border ${
+                      isSelected
+                        ? "dark:bg-zinc-900/95 bg-white border-[#10b981] shadow-[0_12px_35px_-10px_rgba(16,185,129,0.3)] ring-1 ring-[#10b981]/50 scale-[1.01]"
+                        : "dark:bg-zinc-950/70 bg-stone-50/90 dark:border-white/10 border-stone-200/90 hover:dark:bg-zinc-900/60 hover:bg-white shadow-sm"
+                    }`}
+                  >
+                    {/* Active Accent Indicator Bar on Left */}
+                    {isSelected && (
+                      <motion.div
+                        layoutId="activeCompanyIndicator"
+                        className="absolute left-0 top-3 bottom-3 w-1.5 rounded-r-full bg-[#10b981] shadow-[0_0_12px_#10b981]"
+                      />
+                    )}
+
+                    {/* Top Row: Initials + Status Badges */}
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <div className="flex items-center gap-2.5">
+                        <div
+                          className={`w-9 h-9 rounded-2xl flex items-center justify-center font-mono font-black text-xs border shadow-sm ${
+                            isSelected
+                              ? "bg-gradient-to-tr from-[#064e3b] to-[#10b981] text-white border-[#34d399]"
+                              : "dark:bg-zinc-800 bg-stone-200 dark:text-stone-300 text-stone-700 dark:border-white/10 border-stone-300"
+                          }`}
+                        >
+                          {company.initials}
+                        </div>
+                        <span className="text-xs font-mono font-bold dark:text-stone-300 text-stone-800">
+                          {company.shortName}
+                        </span>
+                      </div>
+
+                      {/* Active / Current Badge */}
+                      {company.isCurrent ? (
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/40">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-ping" />
+                          Active
+                        </span>
+                      ) : (
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold dark:bg-white/[0.05] bg-stone-100 dark:text-stone-400 text-stone-600 border dark:border-white/10 border-stone-200">
+                          2+ Years
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Role Title */}
+                    <h4 className="text-base sm:text-lg font-black dark:text-white text-stone-900 mb-1">
+                      {company.role}
+                    </h4>
+
+                    {/* Meta Location & Period */}
+                    <div className="flex flex-wrap items-center gap-2 text-xs font-mono dark:text-stone-400 text-stone-600">
+                      <span className="flex items-center gap-1">
+                        <MapPin className="w-3 h-3 text-[#e69832]" />
+                        {company.locationBadge}
+                      </span>
+                      <span>•</span>
+                      <span>{company.period}</span>
+                    </div>
+
+                    {/* Highlight Dubai Tag */}
+                    {company.internationalHighlight && (
+                      <div className="mt-2.5 pt-2 border-t dark:border-white/10 border-stone-100 flex items-center gap-1 text-[11px] font-mono text-[#10b981] font-semibold">
+                        <Globe2 className="w-3 h-3" />
+                        <span>{company.internationalHighlight}</span>
+                      </div>
+                    )}
+                  </motion.button>
+                );
+              })}
             </div>
 
-            {/* Run Code / Simulate Action */}
-            <button
-              onClick={handleRunSimulation}
-              disabled={isTerminalRunning}
-              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-xl bg-gradient-to-r from-[#7e8a42] to-[#c8cb6d] hover:from-[#8d9b4b] hover:to-[#d5d87a] text-stone-950 font-bold text-[11px] sm:text-xs tracking-wide shadow-lg shadow-[#c8cb6d]/20 active:scale-95 transition-all cursor-pointer disabled:opacity-50"
-            >
-              <Play className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" />
-              <span>{isTerminalRunning ? "Compiling..." : "Run Dev Simulation"}</span>
-            </button>
-          </div>
-
-          {/* IDE Tabs Bar */}
-          <div className="flex overflow-x-auto bg-zinc-950 border-b border-white/10 px-2 sm:px-4 pt-2 gap-1.5 sm:gap-2 scrollbar-none">
-            {experienceData.map((exp, idx) => (
-              <button
-                key={exp.id}
-                onClick={() => setActiveTab(idx)}
-                className={`flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-t-xl text-[11px] sm:text-xs font-mono transition-all duration-200 border-t border-x cursor-pointer shrink-0 ${
-                  activeTab === idx
-                    ? "bg-zinc-900 text-[#e2e58c] border-[#c8cb6d]/40 border-b-zinc-900 shadow-md font-semibold"
-                    : "bg-transparent text-stone-400 border-transparent hover:text-stone-200 hover:bg-white/[0.04]"
-                }`}
-              >
-                <Code2 className="w-3.5 h-3.5 text-[#c8cb6d]" />
-                <span className="text-stone-200">{exp.company.split(" ")[0]}.tsx</span>
-                <span className="text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded bg-white/[0.08] text-stone-300">
-                  {idx === 0 ? "Latest" : "Core"}
+            {/* Quick Summary Pill Card at Bottom of Selector */}
+            <div className="p-4 rounded-2xl glass-panel border dark:border-white/10 border-stone-200/90 shadow-md mt-2">
+              <div className="flex items-center gap-2 mb-1.5">
+                <Sparkles className="w-4 h-4 text-[#10b981]" />
+                <span className="text-xs font-mono font-bold dark:text-white text-stone-900">
+                  Career Trajectory
                 </span>
-              </button>
-            ))}
+              </div>
+              <p className="text-[11px] font-mono dark:text-stone-400 text-stone-600 leading-relaxed">
+                Progressed from Junior Software Developer in Pondicherry to Frontend Lead in Chennai collaborating directly with Dubai enterprise stakeholders.
+              </p>
+            </div>
           </div>
 
-          {/* IDE Workspace Grid: Left Code/Terminal, Right Company Metrics */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-white/10">
-            
-            {/* Left 7 Columns: Live Code & Terminal Output */}
-            <div className="lg:col-span-7 p-3.5 sm:p-6 flex flex-col justify-between bg-zinc-950">
-              <div>
-                {/* File Header */}
-                <div className="flex items-center justify-between text-[11px] sm:text-xs font-mono text-stone-400 mb-3 sm:mb-4 pb-2 border-b border-white/10 gap-2">
-                  <span className="truncate max-w-[190px] xs:max-w-none text-stone-300">{"// ACTIVE_WORKSPACE: src/experience/"}{activeExp.company.split(" ")[0]}.tsx</span>
-                  <span className="text-[#c8cb6d] shrink-0 font-semibold">● Strict 5.0</span>
-                </div>
+          {/* ======================================================================= */}
+          {/* RIGHT COLUMN: RICH DETAIL SHOWCASE CARD (SPAN 8)                        */}
+          {/* ======================================================================= */}
+          <div className="lg:col-span-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCompany.id}
+                initial={{ opacity: 0, y: 15, scale: 0.99 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -15, scale: 0.99 }}
+                transition={{ duration: 0.3 }}
+                className="p-6 sm:p-9 rounded-3xl glass-panel border-2 dark:border-white/15 border-stone-200 shadow-2xl relative overflow-hidden"
+              >
+                {/* Background Ambient Glow */}
+                <div
+                  className="absolute -top-24 -right-24 w-60 h-60 rounded-full blur-3xl opacity-20 pointer-events-none"
+                  style={{ backgroundColor: activeCompany.color }}
+                />
 
-                {/* Syntax Code Display */}
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                    className="font-mono text-[11px] sm:text-[13px] leading-relaxed text-stone-200 bg-zinc-900/90 p-3.5 sm:p-5 rounded-2xl border border-white/10 overflow-x-auto shadow-inner"
-                  >
-                    <pre className="text-[#e2e58c] whitespace-pre-wrap">
-                      <code>{codeSnippets[activeTab]}</code>
-                    </pre>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+                {/* Top Header Badge Row */}
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b dark:border-white/10 border-stone-200/80">
+                  <div className="flex items-center gap-2.5">
+                    <span
+                      className="px-3 py-1 rounded-xl text-xs font-mono font-black tracking-wider uppercase border shadow-sm"
+                      style={{
+                        backgroundColor: activeCompany.accentBg,
+                        color: activeCompany.color,
+                        borderColor: `${activeCompany.color}40`,
+                      }}
+                    >
+                      {activeCompany.shortName}
+                    </span>
 
-              {/* Live Simulated Terminal Output */}
-              <div className="mt-4 sm:mt-6 p-3.5 sm:p-4 rounded-2xl bg-black border border-[#c8cb6d]/30 font-mono text-[11px] sm:text-xs shadow-inner">
-                <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-stone-400 mb-2 border-b border-white/10 pb-1">
-                  <span className="flex items-center gap-1.5 text-[#c8cb6d] font-semibold">
-                    <Terminal className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                    bash output
-                  </span>
-                  <span className="text-stone-500">PID: 4892</span>
-                </div>
+                    {activeCompany.isCurrent && (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/40 shadow-[0_0_12px_rgba(16,185,129,0.3)]">
+                        <span className="w-2 h-2 rounded-full bg-[#10b981] animate-ping" />
+                        Current Role
+                      </span>
+                    )}
+                  </div>
 
-                <div className="space-y-1 min-h-[60px] sm:min-h-[70px] text-stone-300">
-                  {terminalLogs.length === 0 ? (
-                    <p className="text-stone-400 italic text-[11px]">
-                      Click &ldquo;Run Dev Simulation&rdquo; above to trigger live CI/CD pipeline...
-                    </p>
-                  ) : (
-                    terminalLogs.map((log, lIdx) => (
-                      <motion.p
-                        key={lIdx}
-                        initial={{ opacity: 0, x: -5 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className={
-                          log.startsWith("[SUCCESS]")
-                            ? "text-[#c8cb6d] font-bold"
-                            : log.startsWith("[DEPLOY]")
-                            ? "text-[#e2e58c] font-bold"
-                            : log.startsWith("$")
-                            ? "text-[#c8cb6d]"
-                            : "text-stone-200"
-                        }
-                      >
-                        {log}
-                      </motion.p>
-                    ))
+                  {/* International Flag Badge */}
+                  {activeCompany.internationalHighlight && (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase dark:bg-[#c8cb6d]/15 bg-[#5c6b2f]/10 dark:text-[#e2e58c] text-[#344415] border dark:border-[#c8cb6d]/30 border-[#5c6b2f]/30 shadow-sm">
+                      <Globe2 className="w-3.5 h-3.5 text-[#10b981]" />
+                      {activeCompany.internationalHighlight}
+                    </span>
                   )}
                 </div>
-              </div>
-            </div>
 
-            {/* Right 5 Columns: Experience Details & Role Highlights */}
-            <div className="lg:col-span-5 p-5 sm:p-8 flex flex-col justify-between bg-zinc-900/90 text-white">
-              <div>
-                {/* Company & Role Badges */}
-                <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#e2e58c] bg-[#c8cb6d]/15 px-3 py-1 rounded-full border border-[#c8cb6d]/30">
-                    <Calendar className="w-3.5 h-3.5 text-[#c8cb6d]" />
-                    {activeExp.period}
+                {/* Company & Role Headline */}
+                <div className="mb-4">
+                  <h3 className="text-2xl sm:text-4xl font-black dark:text-white text-stone-900 tracking-tight mb-1">
+                    {activeCompany.role}
+                  </h3>
+                  <p className="text-sm sm:text-base font-mono font-bold dark:text-stone-300 text-stone-700">
+                    {activeCompany.company}
+                  </p>
+                </div>
+
+                {/* Meta Location, Period & Tenure */}
+                <div className="flex flex-wrap items-center gap-3 text-xs font-mono mb-6 pb-4 border-b dark:border-white/10 border-stone-200/80">
+                  <span className="inline-flex items-center gap-1.5 font-semibold text-[#10b981]">
+                    <Calendar className="w-3.5 h-3.5" />
+                    {activeCompany.period}
                   </span>
-                  <span className="inline-flex items-center gap-1 text-xs text-stone-300">
-                    <MapPin className="w-3.5 h-3.5 text-[#c8cb6d]" />
-                    {activeExp.location}
+                  <span className="dark:text-stone-500 text-stone-400">•</span>
+                  <span className="inline-flex items-center gap-1.5 dark:text-stone-300 text-stone-700 font-medium">
+                    <MapPin className="w-3.5 h-3.5 text-[#e69832]" />
+                    {activeCompany.locationBadge}
+                  </span>
+                  <span className="dark:text-stone-500 text-stone-400">•</span>
+                  <span className="dark:text-stone-400 text-stone-600 font-medium">
+                    Full-Time Engineering
                   </span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-black text-white mb-1 tracking-tight">
-                  {activeExp.role}
-                </h3>
-                <div className="flex items-center gap-2 text-sm font-bold text-[#c8cb6d] mb-4">
-                  <Building2 className="w-4 h-4 text-[#c8cb6d]" />
-                  <span>{activeExp.company}</span>
-                </div>
-
-                <p className="text-sm text-stone-200 leading-relaxed mb-6 font-normal">
-                  {activeExp.description}
+                {/* Overview Description */}
+                <p className="text-xs sm:text-sm dark:text-stone-300 text-stone-700 leading-relaxed mb-8 font-normal">
+                  {activeCompany.description}
                 </p>
 
-                {/* Key Deliverables Bullet Points */}
-                <div className="space-y-3 mb-6">
-                  {activeExp.achievements.map((item, idx) => (
+                {/* 3 Architecture Pillar Highlight Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mb-8">
+                  {activeCompany.pillars.map((pillar, pIdx) => (
                     <div
-                      key={idx}
-                      className="flex items-start gap-3 text-xs sm:text-sm text-stone-100 leading-relaxed p-3 rounded-xl bg-white/[0.06] border border-white/10 shadow-sm"
+                      key={pIdx}
+                      className="p-4 rounded-2xl dark:bg-white/[0.04] bg-stone-50 border dark:border-white/10 border-stone-200/90 shadow-sm flex flex-col justify-between"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-[#c8cb6d] shrink-0 mt-0.5" />
-                      <span className="text-stone-200 font-medium">{item}</span>
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#10b981] mb-1">
+                        Pillar 0{pIdx + 1} • {pillar.label}
+                      </span>
+                      <h4 className="text-sm sm:text-base font-bold dark:text-white text-stone-900 mb-1">
+                        {pillar.val}
+                      </h4>
+                      <p className="text-[11px] dark:text-stone-400 text-stone-600 leading-snug">
+                        {pillar.desc}
+                      </p>
                     </div>
                   ))}
                 </div>
-              </div>
 
-              {/* Technologies Utilized */}
-              <div className="pt-5 border-t border-white/10">
-                <p className="text-xs font-mono uppercase text-stone-400 mb-2.5 font-semibold">
-                  Production Stack
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {activeExp.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[#c8cb6d]/15 text-[#e2e58c] border border-[#c8cb6d]/30"
-                    >
-                      {getTechIcon(tech, { className: "w-3.5 h-3.5 shrink-0" })}
-                      {tech}
-                    </span>
-                  ))}
+                {/* Key Deliverables & Achievements */}
+                <div className="mb-8">
+                  <span className="text-xs font-mono uppercase font-bold tracking-wider dark:text-stone-400 text-stone-600 mb-3 block">
+                    Key Deliverables & Architectural Achievements
+                  </span>
+                  <div className="grid grid-cols-1 gap-2.5">
+                    {activeCompany.achievements.map((item, aIdx) => (
+                      <div
+                        key={aIdx}
+                        className="flex items-start gap-3 p-3 rounded-2xl dark:bg-white/[0.02] bg-stone-50/80 border dark:border-white/5 border-stone-200/70 text-xs sm:text-sm dark:text-stone-300 text-stone-700 font-medium"
+                      >
+                        <CheckCircle2 className="w-4 h-4 text-[#10b981] shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </div>
 
+                {/* Delivered Production Projects Built at this Company */}
+                <div className="mb-8">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono uppercase font-bold tracking-wider dark:text-stone-400 text-stone-600 flex items-center gap-1.5">
+                      <Boxes className="w-3.5 h-3.5 text-[#10b981]" />
+                      Projects Built at {activeCompany.shortName} ({activeCompany.deliveredProjects.length})
+                    </span>
+                    <a
+                      href="#projects"
+                      className="text-xs font-mono dark:text-[#c8cb6d] text-[#5c6b2f] hover:underline font-semibold flex items-center gap-1"
+                    >
+                      <span>View in Projects</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </a>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {activeCompany.deliveredProjects.map((proj) => (
+                      <a
+                        key={proj.name}
+                        href="#projects"
+                        className="p-3.5 rounded-2xl dark:bg-white/[0.03] bg-stone-50 border dark:border-white/10 border-stone-200/80 hover:dark:border-[#10b981]/50 hover:border-[#10b981]/50 transition-all group flex flex-col justify-between"
+                      >
+                        <div className="flex items-start justify-between gap-2 mb-1.5">
+                          <span className="text-sm font-bold dark:text-white text-stone-900 group-hover:text-[#10b981] transition-colors">
+                            {proj.name}
+                          </span>
+                          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full dark:bg-white/[0.06] bg-white dark:text-[#e2e58c] text-[#344415] border dark:border-white/10 border-stone-200 font-bold shrink-0">
+                            {proj.highlight}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between text-[11px] font-mono dark:text-stone-400 text-stone-600">
+                          <span>{proj.role}</span>
+                          <span className="text-[10px] dark:text-stone-500 text-stone-500">{proj.tech}</span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Production Tech Stack Engine */}
+                <div className="pt-5 border-t dark:border-white/10 border-stone-200/80">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono uppercase font-bold tracking-wider dark:text-stone-400 text-stone-600 flex items-center gap-1.5">
+                      <Layers className="w-3.5 h-3.5 text-[#10b981]" />
+                      Production Stack & Tools
+                    </span>
+                    <span className="text-xs font-mono dark:text-[#c8cb6d] text-[#5c6b2f] font-semibold">
+                      {activeCompany.technologies.length} Technologies
+                    </span>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {activeCompany.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-mono font-semibold dark:bg-white/[0.06] bg-stone-100 dark:text-white text-stone-900 border dark:border-white/10 border-stone-200 shadow-sm hover:scale-105 transition-transform"
+                      >
+                        <span className="w-4 h-4 flex items-center justify-center shrink-0">
+                          {getTechIcon(tech, { className: "w-4 h-4" })}
+                        </span>
+                        <span>{tech}</span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+              </motion.div>
+            </AnimatePresence>
           </div>
 
         </div>
-
       </div>
     </section>
   );

@@ -16,7 +16,8 @@ import {
   Calendar, 
   LayoutDashboard,
   Cpu,
-  ShieldCheck
+  ShieldCheck,
+  Building2
 } from "lucide-react";
 import Image from "next/image";
 
@@ -101,6 +102,12 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2">
+                  {project.company && (
+                    <div className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-black/60 text-stone-200 border border-white/20 backdrop-blur-md">
+                      <Building2 className="w-3.5 h-3.5 text-[#10b981]" />
+                      <span>{project.company}</span>
+                    </div>
+                  )}
                   {project.client && (
                     <div className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-black/60 text-[#e2e58c] border border-white/20 backdrop-blur-md">
                       <Globe2 className="w-3.5 h-3.5 text-[#c8cb6d]" />

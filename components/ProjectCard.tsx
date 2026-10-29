@@ -6,7 +6,7 @@ import { Project } from "@/lib/data";
 import { TiltCard } from "./ui/TiltCard";
 import { Badge } from "./ui/Badge";
 import { getTechIcon } from "./ui/TechIcons";
-import { ArrowUpRight, Layers, Eye, ExternalLink, Globe } from "lucide-react";
+import { ArrowUpRight, Layers, Eye, ExternalLink, Globe, Building2 } from "lucide-react";
 import Image from "next/image";
 
 interface ProjectCardProps {
@@ -84,11 +84,17 @@ export function ProjectCard({ project, onSelect, index = 0 }: ProjectCardProps) 
             </div>
           </div>
 
-          {/* Category */}
+          {/* Category & Company Badge */}
           <div className="flex items-center justify-between gap-2 mb-2">
             <span className="text-[11px] font-mono uppercase tracking-wider dark:text-[#c8cb6d] text-[#344415] font-bold">
               {project.category}
             </span>
+            {project.company && (
+              <span className="inline-flex items-center gap-1 text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full dark:bg-white/[0.06] bg-stone-100 dark:text-stone-300 text-stone-700 border dark:border-white/10 border-stone-200">
+                <Building2 className="w-2.5 h-2.5 text-[#10b981]" />
+                <span>{project.company.includes("Redblox") ? "Redblox" : "Oceansoftwares"}</span>
+              </span>
+            )}
           </div>
 
           {/* Title */}

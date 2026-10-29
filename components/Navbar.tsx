@@ -193,9 +193,9 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="fixed inset-x-4 top-20 z-50 p-5 rounded-2xl glass-panel border border-white/15 shadow-2xl lg:hidden flex flex-col gap-4 backdrop-blur-2xl bg-zinc-950/95 max-h-[85vh] overflow-y-auto"
+              className="fixed inset-x-4 top-20 z-50 p-5 rounded-2xl border dark:border-white/15 border-stone-200/90 shadow-2xl lg:hidden flex flex-col gap-4 backdrop-blur-2xl dark:bg-zinc-950/95 bg-white/98 max-h-[85vh] overflow-y-auto"
             >
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1.5">
                 {navLinks.map((link) => {
                   const Icon = link.icon;
                   const isActive = activeSection === link.href.substring(1);
@@ -204,26 +204,32 @@ export function Navbar() {
                       key={link.name}
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                      className={`flex items-center gap-3.5 px-4 py-3 rounded-xl text-base transition-all ${
                         isActive
-                          ? "bg-[#c8cb6d]/15 text-[#e2e58c] border border-[#c8cb6d]/30 font-semibold"
-                          : "text-stone-300 hover:text-white hover:bg-white/[0.08]"
+                          ? "dark:bg-[#c8cb6d]/20 bg-[#c8cb6d]/30 dark:text-[#f3f59e] text-stone-950 dark:border-[#c8cb6d]/40 border-[#7e8a42]/40 border font-bold shadow-sm"
+                          : "dark:text-stone-300 text-stone-800 hover:dark:text-white hover:text-stone-950 dark:hover:bg-white/[0.08] hover:bg-stone-100/90 font-semibold"
                       }`}
                     >
-                      <Icon className="w-4 h-4 text-[#c8cb6d]" />
+                      <Icon
+                        className={`w-5 h-5 transition-colors ${
+                          isActive
+                            ? "dark:text-[#e2e58c] text-[#5c6b2f]"
+                            : "dark:text-stone-400 text-stone-600"
+                        }`}
+                      />
                       <span>{link.name}</span>
                     </a>
                   );
                 })}
               </div>
 
-              <div className="pt-3 border-t border-white/10 flex flex-col gap-2.5">
+              <div className="pt-3 border-t dark:border-white/10 border-stone-200/90 flex flex-col gap-2.5">
                 <a
                   href={personalData.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   download="Hari_Prasath_Resume.pdf"
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-stone-900 border border-[#c8cb6d]/40 text-white font-semibold text-sm hover:bg-[#c8cb6d]/10 transition-colors"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-stone-900 border dark:border-[#c8cb6d]/40 border-stone-800 text-white font-semibold text-sm hover:opacity-95 transition-all shadow-md"
                 >
                   <Download className="w-4 h-4 text-[#c8cb6d]" />
                   <span>Download Resume (PDF)</span>
@@ -237,7 +243,7 @@ export function Navbar() {
                   <Button
                     variant="gradient"
                     size="md"
-                    className="w-full"
+                    className="w-full shadow-md text-stone-950 font-bold"
                     icon={<ArrowUpRight className="w-4 h-4" />}
                   >
                     Get In Touch
